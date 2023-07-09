@@ -3,5 +3,7 @@ public class tested {
         int num = 5;
         System.out.println("!");
         System.out.printf("%s d",num);
+
+
     }
 }
