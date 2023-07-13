@@ -5,6 +5,7 @@ public class tested {
         System.out.printf("%s d",num);
         // oss
 
+        
 
 
 
