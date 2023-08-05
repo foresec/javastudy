@@ -3,10 +3,14 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 
     // repository와 달리 비즈니스적인 메서드 모음
@@ -18,6 +22,7 @@ public class MemberService {
 
     // repository를 직접 생성하는 것이 아닌, 외부에서 넣어주도록 바꾸는 것
     // 의존성 주입(Dependency Injection)
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

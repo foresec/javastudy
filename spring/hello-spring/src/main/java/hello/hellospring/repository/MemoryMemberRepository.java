@@ -1,14 +1,16 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
+
 
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
     // sequence : 키값 생성
-    private static long sequence = 8L;
+    private static long sequence = 0L;
 
 
     // ctrl + i : implements로 가져오는 repository의 메서드를 자동생성
