@@ -12,6 +12,7 @@ public class Member {
 
     // @Column(name = "username")
     // 컬럼도 마찬가지
+
     @Id
     private Long id;
     @Column(name = "name")
