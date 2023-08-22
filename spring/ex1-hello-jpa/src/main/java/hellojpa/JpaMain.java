@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -50,14 +51,23 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            // getter/setter대신 다른 이름으로 교체하여 다른 로직을 수행함을 명시
+            member.changeTeam(team);
             em.persist(member);
+
+            em.flush();
+            em.clear();
 
             // 조회
             Member findMember = em.find(Member.class, member.getId());
-            Team findTeam = findMember.getTeam();
+//            Team findTeam = findMember.getTeam();
+//            System.out.println(findTeam.getName());
 
-            System.out.println(findTeam.getName());
+//            List<Member> members = findMember.getTeam().getMembers();
+//            for (Member m : members) {
+//                System.out.println("m = " + m.getUsername());
+//            }
+
 
             tx.commit();
 

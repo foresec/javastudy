@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -9,6 +11,15 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
+
+    private String city;
+    private String street;
+    private String zipcode;
+
+    // Member에 orders까지 넣는게 좋은 설계는 아니지만, 연습을 위해
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -50,8 +61,6 @@ public class Member {
         this.zipcode = zipcode;
     }
 
-    private String city;
-    private String street;
-    private String zipcode;
+
 
 }
