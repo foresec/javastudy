@@ -32,6 +32,33 @@ public class JpaMain {
 //            findMember.setName("HelloJPA");
 
 
+
+            // 직관적인 테이블 연관관계 -> 다소 복잡
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setUsername("member1");
+//            member.setTeamId(team.getId());
+//            em.persist(member);
+
+            // 객체 지향 모델링 활용하여 연관관계를 저장한 경우
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+            // 조회
+            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = findMember.getTeam();
+
+            System.out.println(findTeam.getName());
+
             tx.commit();
 
             // JPQL :  DB테이블이 아닌 객체나 엔티티를 대상으로 하는 객체 지향 쿼리
